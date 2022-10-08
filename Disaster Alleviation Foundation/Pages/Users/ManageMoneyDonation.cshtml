@@ -1,0 +1,82 @@
+﻿@page
+@model Disaster_Alleviation_Foundation.Pages.Users.ManageMoneyDonationModel
+@{
+}
+
+<aside id="left-panel" class="left-panel">
+    <nav class="navbar navbar-expand-sm navbar-default">
+        <div id="main-menu" class="main-menu collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="menu-title">Menu</li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="/Users/Index"> Monetary Donation</a>
+                </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="/Users/GoodsDonation"> Goods Donation</a>
+                </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="/Users/categories"> Categories</a>
+                </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="/Users/disaster">Disaster Management</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</aside>
+<div id="right-panel" class="right-panel">
+    <header id="header" class="header">
+        <div class="top-left">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="Logo"></a>
+                <a class="navbar-brand hidden" href="index.html"><img src="images/logo2.png" alt="Logo"></a>
+                <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
+            </div>
+        </div>
+        <div class="top-right">
+            <div class="header-menu">
+                <div class="user-area dropdown float-right">
+                    <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Welcome @Model.name</a>
+                    <div class="user-menu dropdown-menu">
+                        <a class="nav-link" href="#"><i class="fa fa-power-off"></i>Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="content pb-0">
+        <div class="animated fadeIn">
+            <div class="row">
+                @if (Model.errorMessage.Length > 0) {
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>@Model.errorMessage</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                }
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header"><strong>Donation</strong><small> Form</small></div>
+                        <form method="post">
+                            <div class="card-body card-block">
+                                <div class="form-group"><label for="company" class=" form-control-label">ID</label><input type="text" id="id" name="id" placeholder="Enter ID" class="form-control" value="@Model.funds.id"></div>
+                                <div class="form-group"><label for="company" class=" form-control-label">Name</label><input type="text" id="name" name="name" placeholder="Enter your name" class="form-control" value="@Model.funds.name"></div>
+                                
+                                <div class="form-group"><label for="vat" class=" form-control-label">Amount</label><input type="number" id="amount" name="amount" placeholder="Enter your donation Amount" class="form-control" value="@Model.funds.Amount"></div>
+                                @if (Model.successMessage.Length > 0)
+                                {
+                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                        <strong>@Model.successMessage</strong>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                }
+
+                                <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
+                                    <span id="payment-button-amount">Submit</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
