@@ -1,10 +1,10 @@
 name: Disaster-Alleviation-Foundation_$(Date:yyyyMMdd)$(Rev:r)
 trigger:
-- Main
+- master
 pool:
- name: Default
+ vnImage: ubuntu-latest
 steps:
-- task: MSBuild@1
+- task: DotNetCoreCLI@2
   inputs:
-    solution: '**/*.sln'
-    msbuildArguments: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation /p:PackageLocation="$(build.artifactstagingdirectory)\\"'
+    command: 'test'
+    projects: '''**/AllocateGoodsModelTests''.csproj'
