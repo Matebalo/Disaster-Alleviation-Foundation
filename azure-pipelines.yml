@@ -4,6 +4,7 @@ trigger:
 pool:
  name: Default
 steps:
-- task: DotNetCoreCLI@2
+- task: MSBuild@1
   inputs:
-    command: 'build'
+    solution: '**/*.sln'
+    msbuildArguments: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation /p:PackageLocation="$(build.artifactstagingdirectory)\\"'
